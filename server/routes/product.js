@@ -151,4 +151,30 @@ router.post("/getProducts", async (req, res) => {
     }
 });
 
+//=================================
+//      Get Product By ID
+//=================================
+router.get("/products_by_id", async (req, res) => {
+    let type = req.query.type;
+    let productIds = req.query.id;
+
+    // Mongoose's $in operator expects an array. We format it here to prevent CastErrors:
+    if (type === "array") {
+        let ids = req.query.id.split(',');
+        productIds = ids.map(item => item);
+    } else {
+        // Forces a single ID string into an array format
+        productIds = [req.query.id]; 
+    }
+
+    try {
+        const product = await Product.find({ '_id': { $in: productIds } })
+            .populate('writer')
+            .exec();
+        return res.status(200).send(product);
+    } catch (err) {
+        return res.status(400).send(err);
+    }
+});
+
 module.exports = router;
