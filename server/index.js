@@ -14,7 +14,8 @@ const connect = mongoose.connect(uri)
   .catch(err => console.log(err));
 
 app.use(cors({
-    origin: "https://fullstack-rose-alpha.vercel.app", // Your exact Vercel URL (no trailing slash)
+   // origin: "https://fullstack-rose-alpha.vercel.app", // Your exact Vercel URL (no trailing slash)
+    origin: "https://ayokunle.org",
     credentials: true // This explicitly allows cookies to be sent!
 }));
 
