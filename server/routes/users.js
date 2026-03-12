@@ -198,4 +198,26 @@ router.get('/getHistory', auth, async (req, res) => {
     }
 });
 
+//=================================
+//      Admin: Get All Users
+//=================================
+router.get("/getAllUsers", auth, async (req, res) => {
+    try {
+        // Security Check: Kick out anyone who isn't an Admin (role === 1)
+        if (req.user.role !== 1) {
+            return res.status(403).json({ 
+                success: false, 
+                message: "Access denied. Admin privileges required." 
+            });
+        }
+
+        // Fetch all users, but explicitly exclude the password field
+        const users = await User.find().select('-password').exec();
+        return res.status(200).json({ success: true, users });
+        
+    } catch (err) {
+        return res.status(400).json({ success: false, err });
+    }
+});
+
 module.exports = router;
