@@ -21,7 +21,7 @@ const ProductInfo = (props) => {
                 <Descriptions.Item label="Price">{Product.price}</Descriptions.Item>
                 <Descriptions.Item label="Sold">{Product.sold}</Descriptions.Item>
                 <Descriptions.Item label="View">{Product.view}</Descriptions.Item>
-                <Descriptions.Item label="Description">{Product.description}</Descriptions.Item>
+                <Descriptions.Item label="Description" span={3}>{Product.description}</Descriptions.Item>
                 <br />
                 <br />
                 <br />
@@ -34,5 +34,6 @@ const ProductInfo = (props) => {
         </div>
     )
 }
+
 
 export default ProductInfo 
