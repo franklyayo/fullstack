@@ -13,7 +13,11 @@ const connect = mongoose.connect(uri)
   .then(() => console.log('MongoDB Connected...'))
   .catch(err => console.log(err));
 
-app.use(cors())
+app.use(cors({
+    origin: "https://fullstack-rose-alpha.vercel.app", // Your exact Vercel URL (no trailing slash)
+    credentials: true // This explicitly allows cookies to be sent!
+}));
+
 app.use(cookieParser()); // 2. Tell Express to use it! Make sure this is BEFORE your routes.
 
 app.use(express.urlencoded({ extended: true }));
@@ -23,16 +27,6 @@ app.use('/api/users', require('./routes/users'));
 app.use('/api/product', require('./routes/product'));
 
 app.use('/uploads', express.static('uploads'));
-
-if (process.env.NODE_ENV === "production") {
-
-  app.use(express.static("client/build"));
-
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "../client", "build", "index.html"));
-  });
-}
-
 
 const port = process.env.PORT || 5000
 
