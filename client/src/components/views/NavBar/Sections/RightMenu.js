@@ -33,10 +33,13 @@ function RightMenu(props) {
     );
   } else {
     return (
-      <Menu mode={props.mode}>
-        <Menu.Item key="upload">
-          <a href="/product/upload">Upload</a>
-        </Menu.Item>
+     <Menu mode={props.mode}>
+        {/* Only render this item if the user is an Admin */}
+        {user.userData.isAdmin && (
+            <Menu.Item key="upload">
+                <a href="/product/upload">Upload</a>
+            </Menu.Item>
+        )}
         <Menu.Item key="history">
           <a href="/history">History</a>
         </Menu.Item>
