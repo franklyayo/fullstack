@@ -59,7 +59,7 @@ const FileUpload = (props) => {
                     <div onClick={() => onDelete(image)} key={index}>
                         <img
                             style={{minWidth: '300px', width: '300px', height: '240px'}} 
-                            src={`http://localhost:5000/${image}`} alt={`product-${index}`} 
+                            src={image} alt={`product-${index}`} 
                             />
                     </div>
                 ))}
@@ -68,5 +68,6 @@ const FileUpload = (props) => {
         </div>
     )
 }
+
 
 export default FileUpload;
