@@ -39,7 +39,11 @@ function RightMenu(props) {
             <Menu.Item key="upload">
                 <a href="/product/upload">Upload</a>
             </Menu.Item>
+         <Menu.Item key="dashboard">
+                <a href="/admin/dashboard">Dashboard</a>
+        </Menu.Item>
         )}
+      
         <Menu.Item key="history">
           <a href="/history">History</a>
         </Menu.Item>
