@@ -51,9 +51,17 @@ router.post("/login", async (req, res) => {
             return res.json({ loginSuccess: false, message: "Wrong password" });
         }
 
-        const userWithToken = await user.generateToken();
-        res.cookie("w_authExp", userWithToken.tokenExp);
-        res.cookie("w_auth", userWithToken.token)
+    const userWithToken = await user.generateToken();
+        
+        // Add these security options for cross-origin cookies
+        const cookieOptions = {
+            httpOnly: true,
+            secure: true, // Requires HTTPS (which Render uses)
+            sameSite: 'none' // Explicitly allows cross-site cookies
+        };
+
+        res.cookie("w_authExp", userWithToken.tokenExp, cookieOptions);
+        res.cookie("w_auth", userWithToken.token, cookieOptions)
             .status(200)
             .json({
                 loginSuccess: true, userId: userWithToken._id
