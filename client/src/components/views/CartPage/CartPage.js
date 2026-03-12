@@ -72,7 +72,7 @@ const CartPage = (props) => {
     };
 
     return (
-        <PayPalScriptProvider options={{ "client-id": "YOUR_CLIENT_ID" }}>
+        <PayPalScriptProvider options={{ "client-id": "sb" }}>
             <div style={{ width: '85%', margin: '3rem auto' }}>
                 <h1>My Cart</h1>
                 <div>
