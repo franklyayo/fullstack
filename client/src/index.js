@@ -12,6 +12,11 @@ import { createStore, applyMiddleware } from 'redux';
 import promiseMiddleware from 'redux-promise';
 import { thunk as ReduxThunk } from 'redux-thunk';
 
+import axios from 'axios'; // 1. Import axios
+
+// 2. Set the global base URL to your live Render backend
+axios.defaults.baseURL = 'https://fullstack-ng6s.onrender.com';
+
 const createStoreWithMiddleware = applyMiddleware(promiseMiddleware, ReduxThunk)(createStore);
 
 ReactDOM.render(
