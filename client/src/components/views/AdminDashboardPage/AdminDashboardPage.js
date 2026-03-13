@@ -8,10 +8,26 @@ function AdminDashboardPage() {
     const [users, setUsers] = useState([]);
     const [products, setProducts] = useState([]);
 
-    useEffect(() => {
-        // We will build these backend routes next!
-        // Axios.get('/api/users/getAllUsers').then(...)
-        // Axios.get('/api/product/getProducts').then(...)
+   useEffect(() => {
+        // Fetch all users
+        Axios.get('/api/users/getAllUsers')
+            .then(response => {
+                if (response.data.success) {
+                    setUsers(response.data.users);
+                } else {
+                    alert('Failed to fetch users');
+                }
+            });
+
+        // Fetch all products
+        Axios.get('/api/product/getAllProducts')
+            .then(response => {
+                if (response.data.success) {
+                    setProducts(response.data.products);
+                } else {
+                    alert('Failed to fetch products');
+                }
+            });
     }, []);
 
     return (
