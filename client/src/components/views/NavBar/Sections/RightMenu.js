@@ -44,7 +44,7 @@ function RightMenu(props) {
          <Menu.Item key="dashboard">
                 <a href="/admin/dashboard">Dashboard</a>
         </Menu.Item>
-         </> {/* <-- ADD THIS CLOSING FRAGMENT */}
+         < /> {/* <-- ADD THIS CLOSING FRAGMENT */}
         )}
       
         <Menu.Item key="history">
