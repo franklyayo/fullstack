@@ -37,12 +37,14 @@ function RightMenu(props) {
         {/* Only render this item if the user is an Admin */}
        {/* The safety check: Make sure userData exists BEFORE checking isAdmin */}
         {user.userData && user.userData.isAdmin && (
+            <> {/* <-- ADD THIS OPENING FRAGMENT */}
             <Menu.Item key="upload">
                 <a href="/product/upload">Upload</a>
             </Menu.Item>
          <Menu.Item key="dashboard">
                 <a href="/admin/dashboard">Dashboard</a>
         </Menu.Item>
+         </> {/* <-- ADD THIS CLOSING FRAGMENT */}
         )}
       
         <Menu.Item key="history">
