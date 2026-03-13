@@ -177,4 +177,27 @@ router.get("/products_by_id", async (req, res) => {
     }
 });
 
+//=================================
+//    Admin: Get All Products
+//=================================
+router.get("/getAllProducts", auth, async (req, res) => {
+    try {
+        // Security Check: Admins only
+        if (req.user.role !== 1) {
+            return res.status(403).json({ 
+                success: false, 
+                message: "Access denied. Admin privileges required." 
+            });
+        }
+
+        // Fetch the entire inventory
+        const products = await Product.find().populate('writer').exec();
+        return res.status(200).json({ success: true, products });
+
+    } catch (err) {
+        return res.status(400).json({ success: false, err });
+    }
+});
+
 module.exports = router;
+
