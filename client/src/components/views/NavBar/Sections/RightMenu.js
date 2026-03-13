@@ -35,7 +35,8 @@ function RightMenu(props) {
     return (
      <Menu mode={props.mode}>
         {/* Only render this item if the user is an Admin */}
-        {user.userData.isAdmin && (
+       {/* The safety check: Make sure userData exists BEFORE checking isAdmin */}
+        {user.userData && user.userData.isAdmin && (
             <Menu.Item key="upload">
                 <a href="/product/upload">Upload</a>
             </Menu.Item>
