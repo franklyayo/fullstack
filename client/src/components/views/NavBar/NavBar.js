@@ -37,7 +37,7 @@ function NavBar() {
           <MenuOutlined />
         </Button>
         <Drawer
-          title="Basic Drawer"
+          title="Training Heights"
           placement="right"
           className="menu_drawer"
           closable={false}
